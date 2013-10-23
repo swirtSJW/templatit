@@ -1,0 +1,4 @@
+# First, ignore everything in templates
+templates/*
+# Now, whitelist the initialize tpl
+!templates/templatit-intialize.tpl.php
