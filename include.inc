@@ -113,7 +113,6 @@ function templateToss($sTemplateName=NULL, $sStatesToToss=NULL, $sTargetID=NULL,
            $sReturn .= "oTemplatit.templateTosser.tossable.$sJSfriendlyTemplateName = $sBlock;\n";
         }
         $sReturn .= "$(document).on('templatitInitialized', function() {\n";
-        $sReturn .= "console.log('I initted');";
             // Write the tosscall
             if ($bAjax === TRUE) {
                 //Should come in via ajax
