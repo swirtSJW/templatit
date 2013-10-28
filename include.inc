@@ -72,9 +72,8 @@ function newTemplateObject($sTemplateName, $sCallbackFunction = '') {
 function tmpl8($sTemplateName = null, $mSomeVar = '') {
     if (!empty($sTemplateName) && is_string($sTemplateName)) {
         $oTemplateObject = newTemplateObject($sTemplateName);
-        if (!empty($mSomeVar)) {
-            $oTemplateObject->vars->templateVar1 = $mSomeVar;
-        }
+        //Pass the variable to the tpl
+        $oTemplateObject->vars = $mSomeVar;
 
         return templatit($oTemplateObject);
     }
