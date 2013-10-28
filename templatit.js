@@ -3,6 +3,7 @@
  * @author Steve Wirt
  */
 
+
 /**
  * A quick way to harvest and parse any url parameters
  */
@@ -28,18 +29,23 @@
      }
 };
 
+//Set event to happen when templatitInitialized is triggered
+$(document).on( "templatitInitialized", function() {
+  // Continue to update the screensize if window is adjusted
+  consoleMe('Settign Resize in initialized bind');
+  $(window).resize(templatitSetScreenSize);
+  //runTossCalls();
+});
 
 
-;(function($) {
-    $(document).ready(function(){
-        $(document).trigger("templatitInitialized", {});
-        // CHECK FOR screen size TO SET  BODY data and oTemplatit.settings.screensize.current/////
-        templatitSetScreenSize();
-       // Continue to update the screensize if window is adjusted
-       $(window).resize(templatitSetScreenSize);
-       runTossCalls();
-    });
-})(jQuery);
+
+$(document).ready(function(){
+    oTemplatit.isDocReady = true;
+    $(document).trigger("templatitInitialized", {});
+    consoleMe('running tosscalls from doc ready');
+     runTossCalls();
+});
+
 
 
 /**
@@ -76,8 +82,9 @@
         oTemplatit.screensize.current = screenSizeNew;
         oTemplatit.screensize.initialized = "TRUE";
         consoleMe('Initialized as: ' + screenSizeNew);
-
-        runTossCalls();
+        if (oTemplatit.isDocReady) {
+            runTossCalls();
+        }
         //Trigger postStateChange
         $(document).trigger('postStateChange' ,{
             oldstate: sOldScreenState,
@@ -100,8 +107,10 @@
             jQuery('html').attr('data-screensize', screenSizeNew +' '+ sSubBrackets);
             oTemplatit.screensize.current = screenSizeNew;
             oTemplatit.aSubBrackets = sSubBrackets;
-            //re-run the toss function calls
-            runTossCalls();
+            if (oTemplatit.isDocReady) {
+                //re-run the toss function calls
+                runTossCalls();
+            }
             //Trigger postStateChange
             $(document).trigger("postStateChange",{
                 oldstate: sOldScreenState,
@@ -111,6 +120,13 @@
     }
 };
 
+
+
+//Script fully loaded so trigger first set of screen size
+(function(){
+    consoleMe('First running of templatitSetScreenSize');
+    templatitSetScreenSize ();
+})();
 
 
 // Template Tosser JS /////////////////////////////////////////////////////////////

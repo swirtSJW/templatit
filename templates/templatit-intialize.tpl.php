@@ -1,6 +1,7 @@
 <?= tto(__FILE__); ?>
 <script>
     var oTemplatit = new Object;
+    oTemplatit.isDocReady = false;
     oTemplatit.brackets = new Object;
         //Add and define minimum cutoffs for brackets here.
         //Must be in order from smallest to largest.
