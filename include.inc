@@ -23,7 +23,7 @@
           ob_start();
       }
 
-
+      // testy comment
       $bIncludeWorked = include($sTPLfile);
       //means the include was successful
       $sReturn =  ob_get_contents();
