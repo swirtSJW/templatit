@@ -1,7 +1,8 @@
 <?php
-//This page is not important, but needs to exist to control page rquests.
+// This page is not important, but needs to exist to control page rquests.
+// All pages are important.
 
- //return 404
+ // return 404
   $sHost  = $_SERVER['HTTP_HOST'];
   // Full path to 404 page or page they should be bounced to
   $page_404_location = '';
