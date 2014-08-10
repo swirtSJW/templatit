@@ -90,6 +90,7 @@ function tmpl8($sTemplateName = null, $mSomeVar = '') {
  */
 function templateToss($sTemplateName=NULL, $sStatesToToss=NULL, $sTargetID=NULL, $bAjax=FALSE ) {
     $sReturn = '';
+    $sBlock = '';
     //load the template
     if (!empty($sTemplateName)) {
         //If not coming from ajax, load the template.
@@ -119,11 +120,11 @@ function templateToss($sTemplateName=NULL, $sStatesToToss=NULL, $sTargetID=NULL,
             }
             else {
                 //Tossed the normal way.
-                
+
                  $sReturn .= "      tossTemplate('$sJSfriendlyTemplateName', '{$sStatesToToss}' , '$sTargetID');\n";
             }
          $sReturn .=  "});\n";
-            
+
         $sReturn .= "</script>\n";
     }
 
@@ -196,7 +197,6 @@ function defineTemplatitPath() {
             $iB++;
         }
         //TRUE switch, first on to evaluate to true wins
-        $debug .= '<p>comparing '.$sDirectory.' to '.$aB[$iB].' </p>';
         switch (TRUE) {
             case (empty($sDirectory)):
                 break;
@@ -212,7 +212,7 @@ function defineTemplatitPath() {
                 //no match
                 $iB++;
                 break;
-           
+
             case ((!empty($aB[$iB])) && ($sDirectory != $aB[$iB]) && ($parseFlag == 2)):
                 //no match
                 $aParsed[] = $sDirectory;
