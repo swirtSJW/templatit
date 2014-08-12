@@ -1,4 +1,6 @@
-<?= tto(__FILE__); ?>
+<?= tto(__FILE__); 
+// stuff to note
+?>
 <script>
     var oTemplatit = new Object;
     oTemplatit.isDocReady = false;
